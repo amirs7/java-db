@@ -1,0 +1,64 @@
+stages:
+  - test
+  - build
+  - upload
+  - release
+variables:
+  PACKAGE_VERSION: "1.2.3"
+  LINUX_BINARY: "linux-${PACKAGE_VERSION}"
+  PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/release/${PACKAGE_VERSION}"
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+  MYSQL_ROOT_PASSWORD: 12345
+  MYSQL_DATABASE: myscript
+  MYSQL_USER: hoda
+  MYSQL_PASSWORD: 1234
+
+#test:
+#  services:
+#    - mysql
+#  image: python:3.8-slim
+#  stage: test
+#  script:
+#    - python3 -m venv myenv
+#    - . myenv/bin/activate
+#    - pip install --no-cache-dir -r requirements.txt
+#    - python init_db.py
+#    - python -m unittest
+#  variables:
+#    DB_USER: hoda
+#    DB_PASS: 1234
+#    DB_NAME: myscript
+#    DB_HOST: mysql
+
+build:
+  image: python:3.8-slim
+  stage: build
+  before_script:
+    - apt update && apt install -y binutils
+  script:
+    - python3 -m venv myenv
+    - . myenv/bin/activate
+    - pip install --no-cache-dir -r requirements.txt
+    - pyinstaller --onefile --noconfirm --clean run.py
+  artifacts:
+    paths:
+      - dist/
+
+upload:
+  stage: upload
+  image: curlimages/curl:latest
+  script:
+    - |
+      curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file dist/run ${PACKAGE_REGISTRY_URL}/${LINUX_BINARY}
+
+release:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  when: manual
+  script:
+    - |
+      release-cli create --name "Release $CI_COMMIT_REF_SLUG" --tag-name $CI_COMMIT_REF_SLUG \
+        --assets-link "{\"name\":\"${LINUX_BINARY}\",\"url\":\"${PACKAGE_REGISTRY_URL}/${LINUX_BINARY}\"}"
+
+
