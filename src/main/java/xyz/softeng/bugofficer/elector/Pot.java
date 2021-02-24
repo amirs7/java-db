@@ -1,6 +1,6 @@
-package xyz.softeng.dbscript.elector;
+package xyz.softeng.bugofficer.elector;
 
-import xyz.softeng.dbscript.dataaccess.Person;
+import xyz.softeng.bugofficer.dataaccess.Person;
 
 import java.util.ArrayList;
 import java.util.Comparator;

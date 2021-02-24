@@ -1,4 +1,4 @@
-package xyz.softeng.dbscript.elector;
+package xyz.softeng.bugofficer.elector;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -6,13 +6,10 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
-import org.springframework.shell.jline.InteractiveShellApplicationRunner;
-import org.springframework.shell.jline.ScriptShellApplicationRunner;
 import org.springframework.test.context.ActiveProfiles;
-import xyz.softeng.dbscript.dataaccess.Person;
-import xyz.softeng.dbscript.dataaccess.PersonRepository;
-import xyz.softeng.dbscript.dataaccess.Role;
+import xyz.softeng.bugofficer.dataaccess.Person;
+import xyz.softeng.bugofficer.dataaccess.PersonRepository;
+import xyz.softeng.bugofficer.dataaccess.Role;
 
 import java.util.List;
 

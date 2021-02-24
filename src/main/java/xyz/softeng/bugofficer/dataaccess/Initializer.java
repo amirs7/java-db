@@ -1,4 +1,4 @@
-package xyz.softeng.dbscript.dataaccess;
+package xyz.softeng.bugofficer.dataaccess;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
@@ -14,6 +14,9 @@ public class Initializer {
 
     @PostConstruct
     public void init() {
+        if(personRepository.count() >0 )
+            return;
+
         personRepository.deleteAll();
 
         personRepository.save(new Person("amir", "devops", Role.BACKEND));

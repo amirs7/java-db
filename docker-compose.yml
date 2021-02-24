@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  bugofficer:
+    container_name: bugofficer
+    build:
+      context: ./
+    ports:
+      - 8080:80
+

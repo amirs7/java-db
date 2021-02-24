@@ -1,9 +1,9 @@
-package xyz.softeng.dbscript.elector;
+package xyz.softeng.bugofficer.elector;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import xyz.softeng.dbscript.dataaccess.Person;
-import xyz.softeng.dbscript.dataaccess.PersonRepository;
+import xyz.softeng.bugofficer.dataaccess.Person;
+import xyz.softeng.bugofficer.dataaccess.PersonRepository;
 
 import java.util.Comparator;
 import java.util.Set;

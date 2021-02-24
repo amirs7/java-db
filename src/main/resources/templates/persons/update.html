@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title data-th-text="${person.name}">Person</title>
+</head>
+<body>
+<form data-th-action="@{/persons/{id}(id=${person.id})}" data-th-object="${person}" data-th-method="put">
+    <p>Name: <input type="text" data-th-field="*{name}"/></p>
+    <p>Team: <input type="text" data-th-field="*{team}"/></p>
+    <p>Role:
+        <select data-th-field="*{role}">
+            <option data-th-value="BACKEND">Backend</option>
+            <option data-th-value="FRONTEND">Frontend</option>
+        </select>
+    </p>
+    <button type="submit">Update</button>
+</form>
+<form data-th-action="@{/persons/{id}(id=${person.id})}" data-th-method="delete">
+    <button style="color: red" type="submit">Delete</button>
+</form>
+</body>
+
+</html>

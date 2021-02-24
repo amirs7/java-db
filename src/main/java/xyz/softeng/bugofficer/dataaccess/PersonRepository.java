@@ -1,4 +1,4 @@
-package xyz.softeng.dbscript.dataaccess;
+package xyz.softeng.bugofficer.dataaccess;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

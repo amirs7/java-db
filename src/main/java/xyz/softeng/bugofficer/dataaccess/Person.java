@@ -1,4 +1,4 @@
-package xyz.softeng.dbscript.dataaccess;
+package xyz.softeng.bugofficer.dataaccess;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,9 +14,9 @@ import javax.persistence.Id;
 public class Person {
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
-    @NaturalId
+    @NaturalId(mutable = true)
     private String name;
 
     private String team;

@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Persons List</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Team</th>
+        <th>Role</th>
+        <th>No Selected</th>
+    </tr>
+    <tr data-th-each="person : ${persons}">
+        <td><a data-th-href="@{/persons/{id}(id=${person.id})}" data-th-text="${person.name}">Amir</a></td>
+        <td data-th-text="${person.team}">Team Alpha</td>
+        <td data-th-text="${person.role}">Backend</td>
+        <td data-th-text="${person.noSelected}">2</td>
+    </tr>
+</table>
+</body>
+</html>
