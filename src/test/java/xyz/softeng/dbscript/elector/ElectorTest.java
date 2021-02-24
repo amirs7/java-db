@@ -6,6 +6,10 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
+import org.springframework.shell.jline.InteractiveShellApplicationRunner;
+import org.springframework.shell.jline.ScriptShellApplicationRunner;
+import org.springframework.test.context.ActiveProfiles;
 import xyz.softeng.dbscript.dataaccess.Person;
 import xyz.softeng.dbscript.dataaccess.PersonRepository;
 import xyz.softeng.dbscript.dataaccess.Role;
@@ -16,6 +20,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 @SpringBootTest
+@ActiveProfiles("test")
 class ElectorTest {
     @Autowired
     private Elector elector;

@@ -20,6 +20,10 @@ public class Initializer {
 
         personRepository.save(new Person("hoda", "ui", Role.FRONTEND));
 
-        personRepository.save(new Person("enzo", "devops", Role.FRONTEND));
+        personRepository.save(new Person("sarah", "ui", Role.FRONTEND));
+
+        personRepository.save(new Person("ramtin", "data", Role.BACKEND));
+
+        personRepository.save(new Person("john", "data", Role.BACKEND));
     }
 }
