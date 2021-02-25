@@ -4,6 +4,7 @@
     <title data-th-text="${person.name}">Person</title>
 </head>
 <body>
+<h1>Update <span data-th-text="${person.name}">Name</span></h1>
 <form data-th-action="@{/persons/{id}(id=${person.id})}" data-th-object="${person}" data-th-method="put">
     <p>Name: <input type="text" data-th-field="*{name}"/></p>
     <p>Team: <input type="text" data-th-field="*{team}"/></p>

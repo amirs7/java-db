@@ -14,8 +14,8 @@ public class Pot {
         queue = new PriorityQueue<>(comparator);
     }
 
-    public void addCandidate(Person candidate) {
-        queue.add(candidate);
+    public void addCandidates(List<Person> candidates) {
+        queue.addAll(candidates);
     }
 
     public Person pick() {

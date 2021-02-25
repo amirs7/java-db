@@ -5,6 +5,7 @@
 </head>
 <body>
 <table>
+    <thead>Candidate Bug-Officers for Next Sprint</thead>
     <tr>
         <th>Name</th>
         <th>Team</th>
@@ -20,7 +21,7 @@
 </table>
 <form data-th-action="@{/bug-officers}" method="post" data-th-object="${form}">
     <div data-th-each="person, stat : ${persons}">
-        <input data-th-name="|persons[${stat.index}]|" data-th-value="${person.id}"/>
+        <input hidden data-th-name="|persons[${stat.index}]|" data-th-value="${person.id}"/>
     </div>
     <button type="submit">Confirm</button>
 </form>

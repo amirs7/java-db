@@ -22,7 +22,7 @@ public class BugOfficerController {
     @GetMapping
     public ModelAndView list(Model model) {
         List<Person> currentOfficers = personRepository.findAllByIsOfficerTrue();
-        ModelAndView view = new ModelAndView("officers/list");
+        ModelAndView view = new ModelAndView("bug-officers/index");
         view.addObject("persons", currentOfficers);
         return view;
     }
@@ -39,23 +39,34 @@ public class BugOfficerController {
     @GetMapping("/candidates")
     public ModelAndView candidates(@RequestParam(defaultValue = "1") Integer count) {
         List<Person> candidates = electionService.getCandidates(count);
-        ModelAndView view = new ModelAndView("officers/candidates");
+        ModelAndView view = new ModelAndView("bug-officers/candidates");
         view.addObject("persons", candidates);
         view.addObject("form", new Form(candidates));
         return view;
     }
 
+    @GetMapping("/retire")
+    public String retire() {
+        retireCurrentOfficers();
+
+        return "redirect:/bug-officers";
+    }
+
     @PostMapping
     public String assignNewOfficers(@ModelAttribute Form form) {
-        List<Person> currentOfficers = personRepository.findAllByIsOfficerTrue();
-        currentOfficers.forEach(Person::retire);
-        personRepository.saveAll(currentOfficers);
+        retireCurrentOfficers();
 
         List<Person> newOfficers = form.getPersons();
         newOfficers.forEach(Person::becomeOfficer);
         personRepository.saveAll(newOfficers);
 
-        return "redirect:bug-officers";
+        return "redirect:/bug-officers";
+    }
+
+    private void retireCurrentOfficers() {
+        List<Person> currentOfficers = personRepository.findAllByIsOfficerTrue();
+        currentOfficers.forEach(Person::retire);
+        personRepository.saveAll(currentOfficers);
     }
 }
 

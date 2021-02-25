@@ -5,6 +5,7 @@
 </head>
 <body>
 <table>
+    <thead>Current Bug-Officers</thead>
     <tr>
         <th>Name</th>
         <th>Team</th>
@@ -18,7 +19,7 @@
         <td data-th-text="${person.noSelected}">2</td>
     </tr>
 </table>
-
+<a href="/bug-officers/retire">Retire Current Officers</a>
 <form data-th-action="@{/bug-officers/candidates}" data-th-object="${person}">
     <input type="number" data-th-name="count"/>
     <button type="submit">Get Candidates for Next Sprint</button>

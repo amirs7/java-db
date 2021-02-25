@@ -7,6 +7,7 @@ import org.hibernate.annotations.NaturalId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Data
 @Entity
@@ -51,4 +52,6 @@ public class Person {
         noSelected++;
         isOfficer = false;
     }
+
+
 }

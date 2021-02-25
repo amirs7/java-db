@@ -4,6 +4,7 @@
     <title>New Person</title>
 </head>
 <body>
+<h1>Create a New Person</h1>
 <form data-th-action="@{/persons}" data-th-object="${person}" method="post">
     <p>Name: <input type="text" data-th-field="*{name}"/></p>
     <p>Team: <input type="text" data-th-field="*{team}"/></p>
