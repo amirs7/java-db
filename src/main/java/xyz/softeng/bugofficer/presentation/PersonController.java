@@ -4,25 +4,25 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import xyz.softeng.bugofficer.dataaccess.Person;
-import xyz.softeng.bugofficer.dataaccess.PersonRepository;
+import xyz.softeng.bugofficer.dataaccess.person.Person;
+import xyz.softeng.bugofficer.dataaccess.person.PersonRepository;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/persons")
-public class PersonsController {
+public class PersonController {
     private final PersonRepository personRepository;
 
     @GetMapping
-    public String listPersons(Model model) {
+    public String list(Model model) {
         model.addAttribute("persons", personRepository.findAll());
-        return "persons/list";
+        return "person/list";
     }
 
     @GetMapping("/new")
     public String newPerson(Model model) {
         model.addAttribute("person", new Person());
-        return "persons/new";
+        return "person/new";
     }
 
     @PostMapping
@@ -35,7 +35,7 @@ public class PersonsController {
     public String read(@PathVariable Long id, Model model) {
         Person person = personRepository.findById(id).orElseThrow();
         model.addAttribute("person", person);
-        return "persons/update";
+        return "person/update";
     }
 
     @PutMapping("/{id}")

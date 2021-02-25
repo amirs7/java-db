@@ -2,8 +2,8 @@ package xyz.softeng.bugofficer.elector;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import xyz.softeng.bugofficer.dataaccess.Person;
-import xyz.softeng.bugofficer.dataaccess.PersonRepository;
+import xyz.softeng.bugofficer.dataaccess.person.Person;
+import xyz.softeng.bugofficer.dataaccess.person.PersonRepository;
 
 import java.util.Comparator;
 import java.util.Set;
@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class Elector {
+public class ElectionService {
     private final PersonRepository personRepository;
     private Set<String> currentSelectedTeams;
 

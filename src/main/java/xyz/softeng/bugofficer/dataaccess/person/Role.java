@@ -1,4 +1,4 @@
-package xyz.softeng.bugofficer.dataaccess;
+package xyz.softeng.bugofficer.dataaccess.person;
 
 import lombok.Getter;
 

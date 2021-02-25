@@ -7,9 +7,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import xyz.softeng.bugofficer.dataaccess.Person;
-import xyz.softeng.bugofficer.dataaccess.PersonRepository;
-import xyz.softeng.bugofficer.dataaccess.Role;
+import xyz.softeng.bugofficer.dataaccess.person.Person;
+import xyz.softeng.bugofficer.dataaccess.person.PersonRepository;
+import xyz.softeng.bugofficer.dataaccess.person.Role;
 
 import java.util.List;
 
@@ -18,9 +18,9 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 @SpringBootTest
 @ActiveProfiles("test")
-class ElectorTest {
+class ElectionServiceTest {
     @Autowired
-    private Elector elector;
+    private ElectionService electionService;
 
     @Autowired
     private PersonRepository personRepository;
@@ -33,7 +33,7 @@ class ElectorTest {
     void testElection(List<Person> persons, String expectedOfficer) {
         personRepository.saveAll(persons);
 
-        Person officer = elector.selectNextOfficer();
+        Person officer = electionService.selectNextOfficer();
 
         assertThat(officer.getName()).isEqualTo(expectedOfficer);
     }

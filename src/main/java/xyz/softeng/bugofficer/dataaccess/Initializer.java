@@ -3,6 +3,9 @@ package xyz.softeng.bugofficer.dataaccess;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import xyz.softeng.bugofficer.dataaccess.person.Person;
+import xyz.softeng.bugofficer.dataaccess.person.PersonRepository;
+import xyz.softeng.bugofficer.dataaccess.person.Role;
 
 import javax.annotation.PostConstruct;
 
