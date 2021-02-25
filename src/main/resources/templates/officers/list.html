@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Persons List</title>
+    <title>Current Bug-Officers</title>
 </head>
 <body>
 <table>
@@ -18,13 +18,10 @@
         <td data-th-text="${person.noSelected}">2</td>
     </tr>
 </table>
-<ul>
-    <li>
-        <a href="/persons/new">Add a New Person</a>
-    </li>
-    <li>
-        <a href="/persons/reset">Reset All Officers</a>
-    </li>
-</ul>
+
+<form data-th-action="@{/bug-officers/candidates}" data-th-object="${person}">
+    <input type="number" data-th-name="count"/>
+    <button type="submit">Get Candidates for Next Sprint</button>
+</form>
 </body>
 </html>

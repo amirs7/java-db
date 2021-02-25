@@ -8,8 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @Entity
@@ -27,8 +25,8 @@ public class Sprint {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate end;
 
-    @ManyToMany
-    private List<Person> bugOfficers = new ArrayList<>();
+    @ManyToOne
+    private Person bugOfficer;
 
     @Transient
     public boolean isInProgress() {

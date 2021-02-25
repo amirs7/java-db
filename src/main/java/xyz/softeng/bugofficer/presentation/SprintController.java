@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import xyz.softeng.bugofficer.dataaccess.person.Person;
 import xyz.softeng.bugofficer.dataaccess.sprint.Sprint;
 import xyz.softeng.bugofficer.dataaccess.sprint.SprintRepository;
+import xyz.softeng.bugofficer.elector.ElectionService;
 
 import java.time.LocalDate;
 
@@ -15,6 +17,7 @@ import java.time.LocalDate;
 @RequestMapping("/sprints")
 public class SprintController {
     private final SprintRepository sprintRepository;
+    private final ElectionService electionService;
 
     @GetMapping
     public ModelAndView list(Model model) {
@@ -42,6 +45,7 @@ public class SprintController {
     @GetMapping("/new")
     public ModelAndView newSprint() {
         ModelAndView view = new ModelAndView("sprint/new");
+
         Sprint sprint = new Sprint();
         sprint.setStart(LocalDate.now());
         view.addObject("sprint", sprint);

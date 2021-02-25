@@ -25,6 +25,16 @@ public class PersonController {
         return "person/new";
     }
 
+    @GetMapping("/reset")
+    public String resetOfficers(Model model) {
+        personRepository.findAll().forEach(person -> {
+            person.setOfficer(false);
+            person.setNoSelected(0);
+            personRepository.save(person);
+        });
+        return "redirect:/persons";
+    }
+
     @PostMapping
     public String create(@ModelAttribute Person person) {
         personRepository.save(person);

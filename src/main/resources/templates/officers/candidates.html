@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Persons List</title>
+    <title>Candidate Bug-Officers</title>
 </head>
 <body>
 <table>
@@ -18,13 +18,11 @@
         <td data-th-text="${person.noSelected}">2</td>
     </tr>
 </table>
-<ul>
-    <li>
-        <a href="/persons/new">Add a New Person</a>
-    </li>
-    <li>
-        <a href="/persons/reset">Reset All Officers</a>
-    </li>
-</ul>
+<form data-th-action="@{/bug-officers}" method="post" data-th-object="${form}">
+    <div data-th-each="person, stat : ${persons}">
+        <input data-th-name="|persons[${stat.index}]|" data-th-value="${person.id}"/>
+    </div>
+    <button type="submit">Confirm</button>
+</form>
 </body>
 </html>

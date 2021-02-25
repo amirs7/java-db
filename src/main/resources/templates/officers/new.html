@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>New Person</title>
+</head>
+<body>
+<form data-th-action="@{/persons}" data-th-object="${person}" method="post">
+    <p>Name: <input type="text" data-th-field="*{name}"/></p>
+    <p>Team: <input type="text" data-th-field="*{team}"/></p>
+    <p>Role:
+        <select data-th-field="*{role}">
+            <option data-th-value="BACKEND">Backend</option>
+            <option data-th-value="FRONTEND">Frontend</option>
+        </select>
+    </p>
+    <button type="submit">Create</button>
+</form>
+</body>
+</html>

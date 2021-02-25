@@ -42,4 +42,13 @@ public class Person {
         this(name, team, role, noSelected);
         this.isOfficer = isOfficer;
     }
+
+    public void becomeOfficer(){
+       isOfficer = true;
+    }
+
+    public void retire() {
+        noSelected++;
+        isOfficer = false;
+    }
 }

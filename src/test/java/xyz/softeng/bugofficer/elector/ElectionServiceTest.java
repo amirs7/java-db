@@ -33,7 +33,7 @@ class ElectionServiceTest {
     void testElection(List<Person> persons, String expectedOfficer) {
         personRepository.saveAll(persons);
 
-        Person officer = electionService.selectNextOfficer();
+        Person officer = electionService.getCandidates(1).get(0);
 
         assertThat(officer.getName()).isEqualTo(expectedOfficer);
     }
