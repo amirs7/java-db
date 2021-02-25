@@ -5,8 +5,6 @@ services:
     container_name: bugofficer
     build:
       context: ./
-    environment:
-      SPRING_PROFILES_ACTIVE: docker
     ports:
       - 9090:80
 

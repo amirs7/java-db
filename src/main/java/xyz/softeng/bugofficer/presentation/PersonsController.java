@@ -1,4 +1,4 @@
-package xyz.softeng.bugofficer.api;
+package xyz.softeng.bugofficer.presentation;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
